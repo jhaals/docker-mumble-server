@@ -1,3 +1,4 @@
 #!/bin/bash
-ruby mumble.rb
-/usr/sbin/murmurd -fg
+set -e
+ruby /mumble.rb
+/usr/bin/supervisord

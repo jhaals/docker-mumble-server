@@ -3,7 +3,7 @@ require 'timeout'
 
 if ENV['SUPW'].nil?
   puts 'SUPW environment variable must be set'
-  exit
+  exit 1
 end
 
 # Set SupepUser password and create initial database
@@ -21,14 +21,12 @@ class Channels
   property :inheritacl, Integer
   property :name,       Text
 end
-
 DataMapper.finalize
-
 # Create channels
-room = ENV['ROOM1_NAME']
+rooms = ENV['ROOMS']
+exit if rooms.nil?
 id = 1
-while true
-  break if room.nil?
+rooms.split(',').each do |room|
   puts "Creating #{room}"
   Channels.create(
   channel_id: id,
@@ -37,6 +35,5 @@ while true
   name: room,
   inheritacl: 1)
   id = id + 1
-  room = ENV["ROOM#{id}_NAME"]
 end
 p Channels.all
