@@ -9,6 +9,7 @@ RUN gem install dm-sqlite-adapter --no-rdoc --no-ri
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD start.sh /
+RUN chmod +x /start.sh
 ADD mumble.rb /
 
 EXPOSE 64738
