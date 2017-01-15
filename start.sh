@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-ruby /mumble.rb
+ruby2.0 /mumble.rb
 /usr/bin/supervisord
